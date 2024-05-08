@@ -6,7 +6,7 @@ resource "intersight_fabric_switch_cluster_profile" "hq-6454" {
       key   = tags.key
       value = tags.value
     }
-  } 
+  }
   organization {
     moid = local.organization
   }
@@ -22,12 +22,12 @@ resource "intersight_fabric_switch_profile" "hq-6454-A" {
       key   = tags.key
       value = tags.value
     }
-  } 
+  }
   type = "instance"
 
   policy_bucket { # Port Policy
-    moid        = intersight_fabric_port_policy.default-6454-A.moid
-    object_type = intersight_fabric_port_policy.default-6454-A.object_type
+    moid        = intersight_fabric_port_policy.hq-6454-A.moid
+    object_type = intersight_fabric_port_policy.hq-6454-A.object_type
   }
 
   policy_bucket { # Network Connectivity
@@ -72,12 +72,12 @@ resource "intersight_fabric_switch_profile" "hq-6454-B" {
       key   = tags.key
       value = tags.value
     }
-  } 
+  }
   type = "instance"
 
   policy_bucket { # Port Policy
-    moid        = intersight_fabric_port_policy.default-6454-B.moid
-    object_type = intersight_fabric_port_policy.default-6454-B.object_type
+    moid        = intersight_fabric_port_policy.hq-6454-B.moid
+    object_type = intersight_fabric_port_policy.hq-6454-B.object_type
   }
 
   policy_bucket { # Network Connectivity
@@ -123,7 +123,7 @@ resource "intersight_fabric_switch_cluster_profile" "dr-6454" {
       key   = tags.key
       value = tags.value
     }
-  } 
+  }
   organization {
     moid = local.organization
   }
@@ -139,7 +139,7 @@ resource "intersight_fabric_switch_profile" "dr-6454-A" {
       key   = tags.key
       value = tags.value
     }
-  } 
+  }
   type = "instance"
 
   policy_bucket { # Port Policy
@@ -189,7 +189,7 @@ resource "intersight_fabric_switch_profile" "dr-6454-B" {
       key   = tags.key
       value = tags.value
     }
-  } 
+  }
   type = "instance"
 
   policy_bucket { # Port Policy

@@ -1,5 +1,5 @@
-resource "intersight_fabric_port_policy" "default-6454-A" {
-  name = "default-6454-A"
+resource "intersight_fabric_port_policy" "hq-6454-A" {
+  name = "hq-6454-A"
   dynamic "tags" {
     for_each = local.tags
     content {
@@ -14,8 +14,8 @@ resource "intersight_fabric_port_policy" "default-6454-A" {
   device_model = "UCS-FI-6454"
 }
 
-resource "intersight_fabric_port_policy" "default-6454-B" {
-  name = "default-6454-B"
+resource "intersight_fabric_port_policy" "hq-6454-B" {
+  name = "hq-6454-B"
   dynamic "tags" {
     for_each = local.tags
     content {
@@ -37,7 +37,7 @@ resource "intersight_fabric_port_mode" "fibrechannel_ports-A" {
   slot_id       = 1
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-A.moid
+    moid = intersight_fabric_port_policy.hq-6454-A.moid
   }
 }
 
@@ -52,7 +52,7 @@ resource "intersight_fabric_fc_storage_role" "fc_storage-A" {
   port_id = each.value
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-A.moid
+    moid = intersight_fabric_port_policy.hq-6454-A.moid
   }
 
 
@@ -68,7 +68,7 @@ resource "intersight_fabric_port_mode" "fibrechannel_ports-B" {
   slot_id       = 1
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-B.moid
+    moid = intersight_fabric_port_policy.hq-6454-B.moid
   }
 
 }
@@ -84,7 +84,7 @@ resource "intersight_fabric_fc_storage_role" "fc_storage-B" {
   port_id = each.value
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-B.moid
+    moid = intersight_fabric_port_policy.hq-6454-B.moid
   }
 }
 
@@ -95,7 +95,7 @@ resource "intersight_fabric_server_role" "server_ports-A" {
   slot_id = 1
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-A.moid
+    moid = intersight_fabric_port_policy.hq-6454-A.moid
   }
 
 }
@@ -107,7 +107,7 @@ resource "intersight_fabric_server_role" "server_ports-B" {
   slot_id = 1
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-B.moid
+    moid = intersight_fabric_port_policy.hq-6454-B.moid
   }
 
 }
@@ -117,7 +117,7 @@ resource "intersight_fabric_uplink_pc_role" "ethernet_pc_uplink-A" {
   pc_id       = 1
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-A.moid
+    moid = intersight_fabric_port_policy.hq-6454-A.moid
   }
 
   dynamic "ports" {
@@ -134,7 +134,7 @@ resource "intersight_fabric_uplink_pc_role" "ethernet_pc_uplink-B" {
   pc_id       = 1
 
   port_policy {
-    moid = intersight_fabric_port_policy.default-6454-B.moid
+    moid = intersight_fabric_port_policy.hq-6454-B.moid
   }
 
   dynamic "ports" {
